@@ -1,4 +1,5 @@
-// Generated from C:/Users/rmama/IdeaProjects/matriz\matrizParser.g4 by ANTLR 4.8
+// Generated from C:/Users/rmama/IdeaProjects/matriz/src/com/company\matrizParser.g4 by ANTLR 4.8
+package com.company;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -16,7 +17,7 @@ public class matrizParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		COR1=1, COR2=2, KEY1=3, KEY2=4, COMA=5, ID=6, INT=7;
+		COR1=1, COR2=2, KEY1=3, KEY2=4, COMA=5, EQ=6, ID=7, INT=8, WS=9;
 	public static final int
 		RULE_array = 0, RULE_arrayInitializer = 1, RULE_variableInitializerList = 2, 
 		RULE_variableInitializer = 3, RULE_annotation = 4;
@@ -30,13 +31,13 @@ public class matrizParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'['", "']'", "'{'", "'}'", "','"
+			null, "'['", "']'", "'{'", "'}'", "','", "'='"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "COR1", "COR2", "KEY1", "KEY2", "COMA", "ID", "INT"
+			null, "COR1", "COR2", "KEY1", "KEY2", "COMA", "EQ", "ID", "INT", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -99,6 +100,10 @@ public class matrizParser extends Parser {
 		public TerminalNode COR2(int i) {
 			return getToken(matrizParser.COR2, i);
 		}
+		public TerminalNode EQ() { return getToken(matrizParser.EQ, 0); }
+		public ArrayInitializerContext arrayInitializer() {
+			return getRuleContext(ArrayInitializerContext.class,0);
+		}
 		public List<AnnotationContext> annotation() {
 			return getRuleContexts(AnnotationContext.class);
 		}
@@ -134,7 +139,7 @@ public class matrizParser extends Parser {
 			setState(13);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==INT) {
+			while (_la==ID) {
 				{
 				{
 				setState(10);
@@ -149,36 +154,26 @@ public class matrizParser extends Parser {
 			match(COR1);
 			setState(17);
 			match(COR2);
-			setState(28);
+			setState(22);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==COR1 || _la==INT) {
+			while (_la==COR1) {
 				{
 				{
-				setState(21);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==INT) {
-					{
-					{
-					setState(18);
-					annotation();
-					}
-					}
-					setState(23);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
-				setState(24);
+				setState(18);
 				match(COR1);
-				setState(25);
+				setState(19);
 				match(COR2);
 				}
 				}
-				setState(30);
+				setState(24);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
+			setState(25);
+			match(EQ);
+			setState(26);
+			arrayInitializer();
 			}
 		}
 		catch (RecognitionException re) {
@@ -225,29 +220,29 @@ public class matrizParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31);
+			setState(28);
 			match(KEY1);
-			setState(33);
+			setState(30);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==KEY1) {
+			if (_la==KEY1 || _la==INT) {
 				{
-				setState(32);
+				setState(29);
 				variableInitializerList();
 				}
 			}
 
-			setState(36);
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==COMA) {
 				{
-				setState(35);
+				setState(32);
 				match(COMA);
 				}
 			}
 
-			setState(38);
+			setState(35);
 			match(KEY2);
 			}
 		}
@@ -299,25 +294,25 @@ public class matrizParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(40);
+			setState(37);
 			variableInitializer();
-			setState(45);
+			setState(42);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(41);
+					setState(38);
 					match(COMA);
-					setState(42);
+					setState(39);
 					variableInitializer();
 					}
 					} 
 				}
-				setState(47);
+				setState(44);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
 			}
 		}
@@ -336,6 +331,7 @@ public class matrizParser extends Parser {
 		public ArrayInitializerContext arrayInitializer() {
 			return getRuleContext(ArrayInitializerContext.class,0);
 		}
+		public TerminalNode INT() { return getToken(matrizParser.INT, 0); }
 		public VariableInitializerContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -359,10 +355,25 @@ public class matrizParser extends Parser {
 		VariableInitializerContext _localctx = new VariableInitializerContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_variableInitializer);
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(48);
-			arrayInitializer();
+			setState(47);
+			_errHandler.sync(this);
+			switch (_input.LA(1)) {
+			case KEY1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(45);
+				arrayInitializer();
+				}
+				break;
+			case INT:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(46);
+				match(INT);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -377,7 +388,7 @@ public class matrizParser extends Parser {
 	}
 
 	public static class AnnotationContext extends ParserRuleContext {
-		public TerminalNode INT() { return getToken(matrizParser.INT, 0); }
+		public TerminalNode ID() { return getToken(matrizParser.ID, 0); }
 		public AnnotationContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -403,8 +414,8 @@ public class matrizParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
-			match(INT);
+			setState(49);
+			match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -419,21 +430,20 @@ public class matrizParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\t\67\4\2\t\2\4\3"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13\66\4\2\t\2\4\3"+
 		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\3\2\7\2\16\n\2\f\2\16\2\21\13\2\3\2\3\2\3"+
-		"\2\7\2\26\n\2\f\2\16\2\31\13\2\3\2\3\2\7\2\35\n\2\f\2\16\2 \13\2\3\3\3"+
-		"\3\5\3$\n\3\3\3\5\3\'\n\3\3\3\3\3\3\4\3\4\3\4\7\4.\n\4\f\4\16\4\61\13"+
-		"\4\3\5\3\5\3\6\3\6\3\6\2\2\7\2\4\6\b\n\2\2\2\67\2\17\3\2\2\2\4!\3\2\2"+
-		"\2\6*\3\2\2\2\b\62\3\2\2\2\n\64\3\2\2\2\f\16\5\n\6\2\r\f\3\2\2\2\16\21"+
-		"\3\2\2\2\17\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2\2\21\17\3\2\2\2\22\23"+
-		"\7\3\2\2\23\36\7\4\2\2\24\26\5\n\6\2\25\24\3\2\2\2\26\31\3\2\2\2\27\25"+
-		"\3\2\2\2\27\30\3\2\2\2\30\32\3\2\2\2\31\27\3\2\2\2\32\33\7\3\2\2\33\35"+
-		"\7\4\2\2\34\27\3\2\2\2\35 \3\2\2\2\36\34\3\2\2\2\36\37\3\2\2\2\37\3\3"+
-		"\2\2\2 \36\3\2\2\2!#\7\5\2\2\"$\5\6\4\2#\"\3\2\2\2#$\3\2\2\2$&\3\2\2\2"+
-		"%\'\7\7\2\2&%\3\2\2\2&\'\3\2\2\2\'(\3\2\2\2()\7\6\2\2)\5\3\2\2\2*/\5\b"+
-		"\5\2+,\7\7\2\2,.\5\b\5\2-+\3\2\2\2.\61\3\2\2\2/-\3\2\2\2/\60\3\2\2\2\60"+
-		"\7\3\2\2\2\61/\3\2\2\2\62\63\5\4\3\2\63\t\3\2\2\2\64\65\7\t\2\2\65\13"+
-		"\3\2\2\2\b\17\27\36#&/";
+		"\2\3\2\7\2\27\n\2\f\2\16\2\32\13\2\3\2\3\2\3\2\3\3\3\3\5\3!\n\3\3\3\5"+
+		"\3$\n\3\3\3\3\3\3\4\3\4\3\4\7\4+\n\4\f\4\16\4.\13\4\3\5\3\5\5\5\62\n\5"+
+		"\3\6\3\6\3\6\2\2\7\2\4\6\b\n\2\2\2\66\2\17\3\2\2\2\4\36\3\2\2\2\6\'\3"+
+		"\2\2\2\b\61\3\2\2\2\n\63\3\2\2\2\f\16\5\n\6\2\r\f\3\2\2\2\16\21\3\2\2"+
+		"\2\17\r\3\2\2\2\17\20\3\2\2\2\20\22\3\2\2\2\21\17\3\2\2\2\22\23\7\3\2"+
+		"\2\23\30\7\4\2\2\24\25\7\3\2\2\25\27\7\4\2\2\26\24\3\2\2\2\27\32\3\2\2"+
+		"\2\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30\3\2\2\2\33\34\7\b\2"+
+		"\2\34\35\5\4\3\2\35\3\3\2\2\2\36 \7\5\2\2\37!\5\6\4\2 \37\3\2\2\2 !\3"+
+		"\2\2\2!#\3\2\2\2\"$\7\7\2\2#\"\3\2\2\2#$\3\2\2\2$%\3\2\2\2%&\7\6\2\2&"+
+		"\5\3\2\2\2\',\5\b\5\2()\7\7\2\2)+\5\b\5\2*(\3\2\2\2+.\3\2\2\2,*\3\2\2"+
+		"\2,-\3\2\2\2-\7\3\2\2\2.,\3\2\2\2/\62\5\4\3\2\60\62\7\n\2\2\61/\3\2\2"+
+		"\2\61\60\3\2\2\2\62\t\3\2\2\2\63\64\7\t\2\2\64\13\3\2\2\2\b\17\30 #,\61";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

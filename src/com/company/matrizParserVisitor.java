@@ -1,4 +1,5 @@
-// Generated from C:/Users/rmama/IdeaProjects/matriz\matrizParser.g4 by ANTLR 4.8
+// Generated from C:/Users/rmama/IdeaProjects/matriz/src/com/company\matrizParser.g4 by ANTLR 4.8
+package com.company;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

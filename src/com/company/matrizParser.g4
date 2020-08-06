@@ -1,10 +1,11 @@
 parser grammar matrizParser;
-
+@header{package com.company;}
 options { tokenVocab=matrizLexer; }
 
 array
-	:	annotation* '[' ']' (annotation* '[' ']')*
+	:	annotation* '[' ']' ('[' ']')* EQ arrayInitializer
 	;
+
 arrayInitializer
     :	'{' variableInitializerList? ','? '}'
     ;
