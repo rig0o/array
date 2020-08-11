@@ -8,15 +8,75 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface matrizParserListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#array}.
+	 * Enter a parse tree produced by {@link matrizParser#sentencias}.
 	 * @param ctx the parse tree
 	 */
-	void enterArray(matrizParser.ArrayContext ctx);
+	void enterSentencias(matrizParser.SentenciasContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link matrizParser#array}.
+	 * Exit a parse tree produced by {@link matrizParser#sentencias}.
 	 * @param ctx the parse tree
 	 */
-	void exitArray(matrizParser.ArrayContext ctx);
+	void exitSentencias(matrizParser.SentenciasContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpression(matrizParser.ExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpression(matrizParser.ExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#multiplyingExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterMultiplyingExpression(matrizParser.MultiplyingExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#multiplyingExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitMultiplyingExpression(matrizParser.MultiplyingExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#powExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterPowExpression(matrizParser.PowExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#powExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitPowExpression(matrizParser.PowExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#signedAtom}.
+	 * @param ctx the parse tree
+	 */
+	void enterSignedAtom(matrizParser.SignedAtomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#signedAtom}.
+	 * @param ctx the parse tree
+	 */
+	void exitSignedAtom(matrizParser.SignedAtomContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtom(matrizParser.AtomContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#atom}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtom(matrizParser.AtomContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion(matrizParser.AsignacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion(matrizParser.AsignacionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link matrizParser#arrayInitializer}.
 	 * @param ctx the parse tree
@@ -48,13 +108,13 @@ public interface matrizParserListener extends ParseTreeListener {
 	 */
 	void exitVariableInitializer(matrizParser.VariableInitializerContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#annotation}.
+	 * Enter a parse tree produced by {@link matrizParser#variable}.
 	 * @param ctx the parse tree
 	 */
-	void enterAnnotation(matrizParser.AnnotationContext ctx);
+	void enterVariable(matrizParser.VariableContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link matrizParser#annotation}.
+	 * Exit a parse tree produced by {@link matrizParser#variable}.
 	 * @param ctx the parse tree
 	 */
-	void exitAnnotation(matrizParser.AnnotationContext ctx);
+	void exitVariable(matrizParser.VariableContext ctx);
 }

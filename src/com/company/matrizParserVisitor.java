@@ -11,11 +11,47 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface matrizParserVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link matrizParser#array}.
+	 * Visit a parse tree produced by {@link matrizParser#sentencias}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitArray(matrizParser.ArrayContext ctx);
+	T visitSentencias(matrizParser.SentenciasContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#expression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpression(matrizParser.ExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#multiplyingExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMultiplyingExpression(matrizParser.MultiplyingExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#powExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPowExpression(matrizParser.PowExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#signedAtom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSignedAtom(matrizParser.SignedAtomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#atom}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAtom(matrizParser.AtomContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link matrizParser#asignacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAsignacion(matrizParser.AsignacionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link matrizParser#arrayInitializer}.
 	 * @param ctx the parse tree
@@ -35,9 +71,9 @@ public interface matrizParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariableInitializer(matrizParser.VariableInitializerContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link matrizParser#annotation}.
+	 * Visit a parse tree produced by {@link matrizParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAnnotation(matrizParser.AnnotationContext ctx);
+	T visitVariable(matrizParser.VariableContext ctx);
 }

@@ -1,15 +1,22 @@
 lexer grammar matrizLexer;
-@header{package com.company;}
-COR1:'[';
-COR2:']';
-KEY1:'{';
-KEY2:'}';
+
+LCOR:'[';
+RCOR:']';
+LKEY:'{';
+RKEY:'}';
+LPAREN:'(';
+RPAREN:')';
 COMA:',';
 EQ: '=';
-ID:LETTER (LETTER)*;
-INT:DIGIT+;
+PLUS:'+';
+MINUS:'-';
+MULT:'*';
+DIV:'/';
+POW:'^';
 
 WS:[ \n\r\t]->skip;
+ID:LETTER (LETTER)*;
+INT:DIGIT+;
 fragment
 DIGIT:[0-9];
 fragment

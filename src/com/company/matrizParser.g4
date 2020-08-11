@@ -1,9 +1,44 @@
 parser grammar matrizParser;
-@header{package com.company;}
+
 options { tokenVocab=matrizLexer; }
 
-array
-	:	annotation* '[' ']' ('[' ']')* EQ arrayInitializer
+
+sentencias
+    :   asignacion
+    |   expression
+    ;
+expression
+   : multiplyingExpression ((PLUS | MINUS) multiplyingExpression)*
+   ;
+
+multiplyingExpression
+   : powExpression ((MULT | DIV) powExpression)*
+   ;
+
+powExpression
+   : <assoc=right> signedAtom (POW signedAtom2)*
+   ;
+signedAtom2
+    : powExpression
+    ;
+signedAtom
+   : PLUS signedAtom
+   | MINUS signedAtom
+   | atom
+   ;
+
+atom
+   :    INT
+   |    ID
+   |    LPAREN expression RPAREN
+   |    arrayInitializer
+   ;
+
+
+
+
+asignacion
+	:	variable* '[' ']' ('[' ']')* ID EQ arrayInitializer
 	;
 
 arrayInitializer
@@ -17,4 +52,4 @@ variableInitializer
     |   INT
     ;
 
-annotation: ID;
+variable: ID;
