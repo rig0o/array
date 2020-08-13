@@ -13,8 +13,10 @@ MINUS:'-';
 MULT:'*';
 DIV:'/';
 POW:'^';
-
-WS:[ \n\r\t]->skip;
+TRANS:'TRASNPUESTA'|'trasnpuesta';
+IMPRIME:'print'|'PRINT';
+//NL:[\r\n];
+WS:[ \r\n\t]->skip;
 ID:LETTER (LETTER)*;
 INT:DIGIT+;
 fragment

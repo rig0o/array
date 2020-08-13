@@ -18,55 +18,15 @@ public interface matrizParserListener extends ParseTreeListener {
 	 */
 	void exitSentencias(matrizParser.SentenciasContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#expression}.
+	 * Enter a parse tree produced by {@link matrizParser#imprime}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpression(matrizParser.ExpressionContext ctx);
+	void enterImprime(matrizParser.ImprimeContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link matrizParser#expression}.
+	 * Exit a parse tree produced by {@link matrizParser#imprime}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpression(matrizParser.ExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#multiplyingExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterMultiplyingExpression(matrizParser.MultiplyingExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#multiplyingExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitMultiplyingExpression(matrizParser.MultiplyingExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#powExpression}.
-	 * @param ctx the parse tree
-	 */
-	void enterPowExpression(matrizParser.PowExpressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#powExpression}.
-	 * @param ctx the parse tree
-	 */
-	void exitPowExpression(matrizParser.PowExpressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#signedAtom}.
-	 * @param ctx the parse tree
-	 */
-	void enterSignedAtom(matrizParser.SignedAtomContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#signedAtom}.
-	 * @param ctx the parse tree
-	 */
-	void exitSignedAtom(matrizParser.SignedAtomContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#atom}.
-	 * @param ctx the parse tree
-	 */
-	void enterAtom(matrizParser.AtomContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#atom}.
-	 * @param ctx the parse tree
-	 */
-	void exitAtom(matrizParser.AtomContext ctx);
+	void exitImprime(matrizParser.ImprimeContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link matrizParser#asignacion}.
 	 * @param ctx the parse tree
@@ -78,43 +38,215 @@ public interface matrizParserListener extends ParseTreeListener {
 	 */
 	void exitAsignacion(matrizParser.AsignacionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#arrayInitializer}.
+	 * Enter a parse tree produced by the {@code Div}
+	 * labeled alternative in {@link matrizParser#e}.
 	 * @param ctx the parse tree
 	 */
-	void enterArrayInitializer(matrizParser.ArrayInitializerContext ctx);
+	void enterDiv(matrizParser.DivContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link matrizParser#arrayInitializer}.
+	 * Exit a parse tree produced by the {@code Div}
+	 * labeled alternative in {@link matrizParser#e}.
 	 * @param ctx the parse tree
 	 */
-	void exitArrayInitializer(matrizParser.ArrayInitializerContext ctx);
+	void exitDiv(matrizParser.DivContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#variableInitializerList}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariableInitializerList(matrizParser.VariableInitializerListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#variableInitializerList}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariableInitializerList(matrizParser.VariableInitializerListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#variableInitializer}.
-	 * @param ctx the parse tree
-	 */
-	void enterVariableInitializer(matrizParser.VariableInitializerContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#variableInitializer}.
-	 * @param ctx the parse tree
-	 */
-	void exitVariableInitializer(matrizParser.VariableInitializerContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link matrizParser#variable}.
+	 * Enter a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link matrizParser#e}.
 	 * @param ctx the parse tree
 	 */
 	void enterVariable(matrizParser.VariableContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link matrizParser#variable}.
+	 * Exit a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link matrizParser#e}.
 	 * @param ctx the parse tree
 	 */
 	void exitVariable(matrizParser.VariableContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterMult(matrizParser.MultContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Mult}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitMult(matrizParser.MultContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Menos}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterMenos(matrizParser.MenosContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Menos}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitMenos(matrizParser.MenosContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Potencias}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterPotencias(matrizParser.PotenciasContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Potencias}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitPotencias(matrizParser.PotenciasContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Plus}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterPlus(matrizParser.PlusContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Plus}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitPlus(matrizParser.PlusContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Trans}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterTrans(matrizParser.TransContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Trans}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitTrans(matrizParser.TransContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterInt(matrizParser.IntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Int}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitInt(matrizParser.IntContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Paren}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterParen(matrizParser.ParenContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Paren}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitParen(matrizParser.ParenContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code R1}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void enterR1(matrizParser.R1Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code R1}
+	 * labeled alternative in {@link matrizParser#e}.
+	 * @param ctx the parse tree
+	 */
+	void exitR1(matrizParser.R1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#transpuesta}.
+	 * @param ctx the parse tree
+	 */
+	void enterTranspuesta(matrizParser.TranspuestaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#transpuesta}.
+	 * @param ctx the parse tree
+	 */
+	void exitTranspuesta(matrizParser.TranspuestaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code PotenciasM}
+	 * labeled alternative in {@link matrizParser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void enterPotenciasM(matrizParser.PotenciasMContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code PotenciasM}
+	 * labeled alternative in {@link matrizParser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void exitPotenciasM(matrizParser.PotenciasMContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code PotenciaA}
+	 * labeled alternative in {@link matrizParser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void enterPotenciaA(matrizParser.PotenciaAContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code PotenciaA}
+	 * labeled alternative in {@link matrizParser#potencia}.
+	 * @param ctx the parse tree
+	 */
+	void exitPotenciaA(matrizParser.PotenciaAContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code R2}
+	 * labeled alternative in {@link matrizParser#arrayInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void enterR2(matrizParser.R2Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code R2}
+	 * labeled alternative in {@link matrizParser#arrayInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void exitR2(matrizParser.R2Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code R3}
+	 * labeled alternative in {@link matrizParser#variableInitializerList}.
+	 * @param ctx the parse tree
+	 */
+	void enterR3(matrizParser.R3Context ctx);
+	/**
+	 * Exit a parse tree produced by the {@code R3}
+	 * labeled alternative in {@link matrizParser#variableInitializerList}.
+	 * @param ctx the parse tree
+	 */
+	void exitR3(matrizParser.R3Context ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Damearry}
+	 * labeled alternative in {@link matrizParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void enterDamearry(matrizParser.DamearryContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Damearry}
+	 * labeled alternative in {@link matrizParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void exitDamearry(matrizParser.DamearryContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DAMEint}
+	 * labeled alternative in {@link matrizParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void enterDAMEint(matrizParser.DAMEintContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DAMEint}
+	 * labeled alternative in {@link matrizParser#variableInitializer}.
+	 * @param ctx the parse tree
+	 */
+	void exitDAMEint(matrizParser.DAMEintContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link matrizParser#tipo}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo(matrizParser.TipoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link matrizParser#tipo}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo(matrizParser.TipoContext ctx);
 }

@@ -4,52 +4,51 @@ options { tokenVocab=matrizLexer; }
 
 
 sentencias
-    :   asignacion
-    |   expression
+    :   (asignacion
+    |   e
+    |   imprime)*
     ;
-expression
-   : multiplyingExpression ((PLUS | MINUS) multiplyingExpression)*
-   ;
-
-multiplyingExpression
-   : powExpression ((MULT | DIV) powExpression)*
-   ;
-
-powExpression
-   : <assoc=right> signedAtom (POW signedAtom2)*
-   ;
-signedAtom2
-    : powExpression
+imprime
+    :   IMPRIME LPAREN e RPAREN
     ;
-signedAtom
-   : PLUS signedAtom
-   | MINUS signedAtom
-   | atom
-   ;
-
-atom
-   :    INT
-   |    ID
-   |    LPAREN expression RPAREN
-   |    arrayInitializer
-   ;
-
-
-
-
 asignacion
-	:	variable* '[' ']' ('[' ']')* ID EQ arrayInitializer
+	:	 ID EQ e
 	;
 
-arrayInitializer
-    :	'{' variableInitializerList? ','? '}'
+e
+ 	:   e POW <assoc=right>potencia      #Potencias
+    |   e MULT e                        #Mult
+    |   e DIV  e                        #Div
+    |   e MINUS e                       #Menos
+ 	|   e PLUS e                        #Plus
+ 	|   LPAREN e RPAREN                 #Paren
+ 	|   transpuesta                     #Trans
+ 	|   arrayInitializer                #R1
+    |   ID                              #Variable
+    |   INT                             #Int
+ 	;
+
+transpuesta
+    :   TRANS'(' e')'
     ;
-variableInitializerList
-    :	variableInitializer (',' variableInitializer)*
-    ;
-variableInitializer
-    :	arrayInitializer
-    |   INT
+potencia
+    : LPAREN MINUS? e RPAREN #PotenciasM
+    | MINUS? e    #PotenciaA
     ;
 
-variable: ID;
+/*asignacion
+	:	tipo * '[' ']' ('[' ']')* ID EQ arrayInitializer
+	;*/
+
+arrayInitializer
+    :	'{' variableInitializerList '}' #R2
+    ;
+variableInitializerList
+    :	variableInitializer (',' variableInitializer)*  #R3
+    ;
+variableInitializer
+    :	arrayInitializer        #Damearry
+    |   INT                     #DAMEint
+    ;
+
+tipo: ID;
