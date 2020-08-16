@@ -158,16 +158,6 @@ public interface matrizParserListener extends ParseTreeListener {
 	 */
 	void exitR1(matrizParser.R1Context ctx);
 	/**
-	 * Enter a parse tree produced by {@link matrizParser#transpuesta}.
-	 * @param ctx the parse tree
-	 */
-	void enterTranspuesta(matrizParser.TranspuestaContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link matrizParser#transpuesta}.
-	 * @param ctx the parse tree
-	 */
-	void exitTranspuesta(matrizParser.TranspuestaContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code PotenciasM}
 	 * labeled alternative in {@link matrizParser#potencia}.
 	 * @param ctx the parse tree

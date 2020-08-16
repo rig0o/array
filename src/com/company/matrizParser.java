@@ -17,34 +17,33 @@ public class matrizParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		LCOR=1, RCOR=2, LKEY=3, RKEY=4, LPAREN=5, RPAREN=6, COMA=7, EQ=8, PLUS=9, 
-		MINUS=10, MULT=11, DIV=12, POW=13, TRANS=14, IMPRIME=15, WS=16, ID=17, 
-		INT=18;
+		PC=1, LCOR=2, RCOR=3, LKEY=4, RKEY=5, LPAREN=6, RPAREN=7, COMA=8, EQ=9, 
+		PLUS=10, MINUS=11, MULT=12, DIV=13, POW=14, TRANS=15, IMPRIME=16, WS=17, 
+		ID=18, INT=19;
 	public static final int
 		RULE_sentencias = 0, RULE_imprime = 1, RULE_asignacion = 2, RULE_e = 3, 
-		RULE_transpuesta = 4, RULE_potencia = 5, RULE_arrayInitializer = 6, RULE_variableInitializerList = 7, 
-		RULE_variableInitializer = 8, RULE_tipo = 9;
+		RULE_potencia = 4, RULE_arrayInitializer = 5, RULE_variableInitializerList = 6, 
+		RULE_variableInitializer = 7, RULE_tipo = 8;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"sentencias", "imprime", "asignacion", "e", "transpuesta", "potencia", 
-			"arrayInitializer", "variableInitializerList", "variableInitializer", 
-			"tipo"
+			"sentencias", "imprime", "asignacion", "e", "potencia", "arrayInitializer", 
+			"variableInitializerList", "variableInitializer", "tipo"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'['", "']'", "'{'", "'}'", "'('", "')'", "','", "'='", "'+'", 
-			"'-'", "'*'", "'/'", "'^'"
+			null, "';'", "'['", "']'", "'{'", "'}'", "'('", "')'", "','", "'='", 
+			"'+'", "'-'", "'*'", "'/'", "'^'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "LCOR", "RCOR", "LKEY", "RKEY", "LPAREN", "RPAREN", "COMA", "EQ", 
-			"PLUS", "MINUS", "MULT", "DIV", "POW", "TRANS", "IMPRIME", "WS", "ID", 
-			"INT"
+			null, "PC", "LCOR", "RCOR", "LKEY", "RKEY", "LPAREN", "RPAREN", "COMA", 
+			"EQ", "PLUS", "MINUS", "MULT", "DIV", "POW", "TRANS", "IMPRIME", "WS", 
+			"ID", "INT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -105,6 +104,10 @@ public class matrizParser extends Parser {
 		public AsignacionContext asignacion(int i) {
 			return getRuleContext(AsignacionContext.class,i);
 		}
+		public List<TerminalNode> PC() { return getTokens(matrizParser.PC); }
+		public TerminalNode PC(int i) {
+			return getToken(matrizParser.PC, i);
+		}
 		public List<EContext> e() {
 			return getRuleContexts(EContext.class);
 		}
@@ -143,35 +146,41 @@ public class matrizParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(25);
+			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LKEY) | (1L << LPAREN) | (1L << TRANS) | (1L << IMPRIME) | (1L << ID) | (1L << INT))) != 0)) {
 				{
-				setState(23);
+				setState(27);
 				_errHandler.sync(this);
 				switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 				case 1:
 					{
-					setState(20);
+					setState(18);
 					asignacion();
+					setState(19);
+					match(PC);
 					}
 					break;
 				case 2:
 					{
 					setState(21);
 					e(0);
+					setState(22);
+					match(PC);
 					}
 					break;
 				case 3:
 					{
-					setState(22);
+					setState(24);
 					imprime();
+					setState(25);
+					match(PC);
 					}
 					break;
 				}
 				}
-				setState(27);
+				setState(31);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -220,13 +229,13 @@ public class matrizParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(28);
+			setState(32);
 			match(IMPRIME);
-			setState(29);
+			setState(33);
 			match(LPAREN);
-			setState(30);
+			setState(34);
 			e(0);
-			setState(31);
+			setState(35);
 			match(RPAREN);
 			}
 		}
@@ -272,11 +281,11 @@ public class matrizParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33);
+			setState(37);
 			match(ID);
-			setState(34);
+			setState(38);
 			match(EQ);
-			setState(35);
+			setState(39);
 			e(0);
 			}
 		}
@@ -435,9 +444,12 @@ public class matrizParser extends Parser {
 		}
 	}
 	public static class TransContext extends EContext {
-		public TranspuestaContext transpuesta() {
-			return getRuleContext(TranspuestaContext.class,0);
+		public TerminalNode TRANS() { return getToken(matrizParser.TRANS, 0); }
+		public TerminalNode LPAREN() { return getToken(matrizParser.LPAREN, 0); }
+		public EContext e() {
+			return getRuleContext(EContext.class,0);
 		}
+		public TerminalNode RPAREN() { return getToken(matrizParser.RPAREN, 0); }
 		public TransContext(EContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -526,7 +538,7 @@ public class matrizParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(46);
+			setState(54);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LPAREN:
@@ -535,11 +547,11 @@ public class matrizParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(38);
+				setState(42);
 				match(LPAREN);
-				setState(39);
+				setState(43);
 				e(0);
-				setState(40);
+				setState(44);
 				match(RPAREN);
 				}
 				break;
@@ -548,8 +560,14 @@ public class matrizParser extends Parser {
 				_localctx = new TransContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(42);
-				transpuesta();
+				setState(46);
+				match(TRANS);
+				setState(47);
+				match(LPAREN);
+				setState(48);
+				e(0);
+				setState(49);
+				match(RPAREN);
 				}
 				break;
 			case LKEY:
@@ -557,7 +575,7 @@ public class matrizParser extends Parser {
 				_localctx = new R1Context(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(43);
+				setState(51);
 				arrayInitializer();
 				}
 				break;
@@ -566,7 +584,7 @@ public class matrizParser extends Parser {
 				_localctx = new VariableContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(44);
+				setState(52);
 				match(ID);
 				}
 				break;
@@ -575,7 +593,7 @@ public class matrizParser extends Parser {
 				_localctx = new IntContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(45);
+				setState(53);
 				match(INT);
 				}
 				break;
@@ -583,7 +601,7 @@ public class matrizParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(65);
+			setState(73);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -591,18 +609,18 @@ public class matrizParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(63);
+					setState(71);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MultContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(48);
+						setState(56);
 						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(49);
+						setState(57);
 						match(MULT);
-						setState(50);
+						setState(58);
 						e(10);
 						}
 						break;
@@ -610,11 +628,11 @@ public class matrizParser extends Parser {
 						{
 						_localctx = new DivContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(51);
+						setState(59);
 						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(52);
+						setState(60);
 						match(DIV);
-						setState(53);
+						setState(61);
 						e(9);
 						}
 						break;
@@ -622,11 +640,11 @@ public class matrizParser extends Parser {
 						{
 						_localctx = new MenosContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(54);
+						setState(62);
 						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(55);
+						setState(63);
 						match(MINUS);
-						setState(56);
+						setState(64);
 						e(8);
 						}
 						break;
@@ -634,11 +652,11 @@ public class matrizParser extends Parser {
 						{
 						_localctx = new PlusContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(57);
+						setState(65);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(58);
+						setState(66);
 						match(PLUS);
-						setState(59);
+						setState(67);
 						e(7);
 						}
 						break;
@@ -646,18 +664,18 @@ public class matrizParser extends Parser {
 						{
 						_localctx = new PotenciasContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(60);
+						setState(68);
 						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(61);
+						setState(69);
 						match(POW);
-						setState(62);
+						setState(70);
 						potencia();
 						}
 						break;
 					}
 					} 
 				}
-				setState(67);
+				setState(75);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
@@ -670,59 +688,6 @@ public class matrizParser extends Parser {
 		}
 		finally {
 			unrollRecursionContexts(_parentctx);
-		}
-		return _localctx;
-	}
-
-	public static class TranspuestaContext extends ParserRuleContext {
-		public TerminalNode TRANS() { return getToken(matrizParser.TRANS, 0); }
-		public TerminalNode LPAREN() { return getToken(matrizParser.LPAREN, 0); }
-		public EContext e() {
-			return getRuleContext(EContext.class,0);
-		}
-		public TerminalNode RPAREN() { return getToken(matrizParser.RPAREN, 0); }
-		public TranspuestaContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_transpuesta; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof matrizParserListener ) ((matrizParserListener)listener).enterTranspuesta(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof matrizParserListener ) ((matrizParserListener)listener).exitTranspuesta(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof matrizParserVisitor ) return ((matrizParserVisitor<? extends T>)visitor).visitTranspuesta(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final TranspuestaContext transpuesta() throws RecognitionException {
-		TranspuestaContext _localctx = new TranspuestaContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_transpuesta);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(68);
-			match(TRANS);
-			setState(69);
-			match(LPAREN);
-			setState(70);
-			e(0);
-			setState(71);
-			match(RPAREN);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
 		}
 		return _localctx;
 	}
@@ -783,31 +748,31 @@ public class matrizParser extends Parser {
 
 	public final PotenciaContext potencia() throws RecognitionException {
 		PotenciaContext _localctx = new PotenciaContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_potencia);
+		enterRule(_localctx, 8, RULE_potencia);
 		int _la;
 		try {
-			setState(84);
+			setState(87);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				_localctx = new PotenciasMContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(73);
+				setState(76);
 				match(LPAREN);
-				setState(75);
+				setState(78);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==MINUS) {
 					{
-					setState(74);
+					setState(77);
 					match(MINUS);
 					}
 				}
 
-				setState(77);
+				setState(80);
 				e(0);
-				setState(78);
+				setState(81);
 				match(RPAREN);
 				}
 				break;
@@ -815,17 +780,17 @@ public class matrizParser extends Parser {
 				_localctx = new PotenciaAContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(81);
+				setState(84);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if (_la==MINUS) {
 					{
-					setState(80);
+					setState(83);
 					match(MINUS);
 					}
 				}
 
-				setState(83);
+				setState(86);
 				e(0);
 				}
 				break;
@@ -877,16 +842,16 @@ public class matrizParser extends Parser {
 
 	public final ArrayInitializerContext arrayInitializer() throws RecognitionException {
 		ArrayInitializerContext _localctx = new ArrayInitializerContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_arrayInitializer);
+		enterRule(_localctx, 10, RULE_arrayInitializer);
 		try {
 			_localctx = new R2Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86);
+			setState(89);
 			match(LKEY);
-			setState(87);
+			setState(90);
 			variableInitializerList();
-			setState(88);
+			setState(91);
 			match(RKEY);
 			}
 		}
@@ -941,27 +906,27 @@ public class matrizParser extends Parser {
 
 	public final VariableInitializerListContext variableInitializerList() throws RecognitionException {
 		VariableInitializerListContext _localctx = new VariableInitializerListContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_variableInitializerList);
+		enterRule(_localctx, 12, RULE_variableInitializerList);
 		int _la;
 		try {
 			_localctx = new R3Context(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90);
+			setState(93);
 			variableInitializer();
-			setState(95);
+			setState(98);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMA) {
 				{
 				{
-				setState(91);
+				setState(94);
 				match(COMA);
-				setState(92);
+				setState(95);
 				variableInitializer();
 				}
 				}
-				setState(97);
+				setState(100);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1028,16 +993,16 @@ public class matrizParser extends Parser {
 
 	public final VariableInitializerContext variableInitializer() throws RecognitionException {
 		VariableInitializerContext _localctx = new VariableInitializerContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_variableInitializer);
+		enterRule(_localctx, 14, RULE_variableInitializer);
 		try {
-			setState(100);
+			setState(103);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LKEY:
 				_localctx = new DamearryContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(98);
+				setState(101);
 				arrayInitializer();
 				}
 				break;
@@ -1045,7 +1010,7 @@ public class matrizParser extends Parser {
 				_localctx = new DAMEintContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(99);
+				setState(102);
 				match(INT);
 				}
 				break;
@@ -1087,11 +1052,11 @@ public class matrizParser extends Parser {
 
 	public final TipoContext tipo() throws RecognitionException {
 		TipoContext _localctx = new TipoContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_tipo);
+		enterRule(_localctx, 16, RULE_tipo);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(105);
 			match(ID);
 			}
 		}
@@ -1130,33 +1095,33 @@ public class matrizParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\24k\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
-		"\2\3\2\3\2\7\2\32\n\2\f\2\16\2\35\13\2\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4"+
-		"\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5\61\n\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7\5B\n\5\f\5\16\5E\13\5\3\6"+
-		"\3\6\3\6\3\6\3\6\3\7\3\7\5\7N\n\7\3\7\3\7\3\7\3\7\5\7T\n\7\3\7\5\7W\n"+
-		"\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\7\t`\n\t\f\t\16\tc\13\t\3\n\3\n\5\ng\n"+
-		"\n\3\13\3\13\3\13\2\3\b\f\2\4\6\b\n\f\16\20\22\24\2\2\2q\2\33\3\2\2\2"+
-		"\4\36\3\2\2\2\6#\3\2\2\2\b\60\3\2\2\2\nF\3\2\2\2\fV\3\2\2\2\16X\3\2\2"+
-		"\2\20\\\3\2\2\2\22f\3\2\2\2\24h\3\2\2\2\26\32\5\6\4\2\27\32\5\b\5\2\30"+
-		"\32\5\4\3\2\31\26\3\2\2\2\31\27\3\2\2\2\31\30\3\2\2\2\32\35\3\2\2\2\33"+
-		"\31\3\2\2\2\33\34\3\2\2\2\34\3\3\2\2\2\35\33\3\2\2\2\36\37\7\21\2\2\37"+
-		" \7\7\2\2 !\5\b\5\2!\"\7\b\2\2\"\5\3\2\2\2#$\7\23\2\2$%\7\n\2\2%&\5\b"+
-		"\5\2&\7\3\2\2\2\'(\b\5\1\2()\7\7\2\2)*\5\b\5\2*+\7\b\2\2+\61\3\2\2\2,"+
-		"\61\5\n\6\2-\61\5\16\b\2.\61\7\23\2\2/\61\7\24\2\2\60\'\3\2\2\2\60,\3"+
-		"\2\2\2\60-\3\2\2\2\60.\3\2\2\2\60/\3\2\2\2\61C\3\2\2\2\62\63\f\13\2\2"+
-		"\63\64\7\r\2\2\64B\5\b\5\f\65\66\f\n\2\2\66\67\7\16\2\2\67B\5\b\5\138"+
-		"9\f\t\2\29:\7\f\2\2:B\5\b\5\n;<\f\b\2\2<=\7\13\2\2=B\5\b\5\t>?\f\f\2\2"+
-		"?@\7\17\2\2@B\5\f\7\2A\62\3\2\2\2A\65\3\2\2\2A8\3\2\2\2A;\3\2\2\2A>\3"+
-		"\2\2\2BE\3\2\2\2CA\3\2\2\2CD\3\2\2\2D\t\3\2\2\2EC\3\2\2\2FG\7\20\2\2G"+
-		"H\7\7\2\2HI\5\b\5\2IJ\7\b\2\2J\13\3\2\2\2KM\7\7\2\2LN\7\f\2\2ML\3\2\2"+
-		"\2MN\3\2\2\2NO\3\2\2\2OP\5\b\5\2PQ\7\b\2\2QW\3\2\2\2RT\7\f\2\2SR\3\2\2"+
-		"\2ST\3\2\2\2TU\3\2\2\2UW\5\b\5\2VK\3\2\2\2VS\3\2\2\2W\r\3\2\2\2XY\7\5"+
-		"\2\2YZ\5\20\t\2Z[\7\6\2\2[\17\3\2\2\2\\a\5\22\n\2]^\7\t\2\2^`\5\22\n\2"+
-		"_]\3\2\2\2`c\3\2\2\2a_\3\2\2\2ab\3\2\2\2b\21\3\2\2\2ca\3\2\2\2dg\5\16"+
-		"\b\2eg\7\24\2\2fd\3\2\2\2fe\3\2\2\2g\23\3\2\2\2hi\7\23\2\2i\25\3\2\2\2"+
-		"\f\31\33\60ACMSVaf";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\25n\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\3\2"+
+		"\3\2\3\2\3\2\3\2\3\2\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\3\3\3\3\3\3\3\3\3"+
+		"\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5"+
+		"\59\n\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\7"+
+		"\5J\n\5\f\5\16\5M\13\5\3\6\3\6\5\6Q\n\6\3\6\3\6\3\6\3\6\5\6W\n\6\3\6\5"+
+		"\6Z\n\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\7\bc\n\b\f\b\16\bf\13\b\3\t\3\t\5"+
+		"\tj\n\t\3\n\3\n\3\n\2\3\b\13\2\4\6\b\n\f\16\20\22\2\2\2u\2\37\3\2\2\2"+
+		"\4\"\3\2\2\2\6\'\3\2\2\2\b8\3\2\2\2\nY\3\2\2\2\f[\3\2\2\2\16_\3\2\2\2"+
+		"\20i\3\2\2\2\22k\3\2\2\2\24\25\5\6\4\2\25\26\7\3\2\2\26\36\3\2\2\2\27"+
+		"\30\5\b\5\2\30\31\7\3\2\2\31\36\3\2\2\2\32\33\5\4\3\2\33\34\7\3\2\2\34"+
+		"\36\3\2\2\2\35\24\3\2\2\2\35\27\3\2\2\2\35\32\3\2\2\2\36!\3\2\2\2\37\35"+
+		"\3\2\2\2\37 \3\2\2\2 \3\3\2\2\2!\37\3\2\2\2\"#\7\22\2\2#$\7\b\2\2$%\5"+
+		"\b\5\2%&\7\t\2\2&\5\3\2\2\2\'(\7\24\2\2()\7\13\2\2)*\5\b\5\2*\7\3\2\2"+
+		"\2+,\b\5\1\2,-\7\b\2\2-.\5\b\5\2./\7\t\2\2/9\3\2\2\2\60\61\7\21\2\2\61"+
+		"\62\7\b\2\2\62\63\5\b\5\2\63\64\7\t\2\2\649\3\2\2\2\659\5\f\7\2\669\7"+
+		"\24\2\2\679\7\25\2\28+\3\2\2\28\60\3\2\2\28\65\3\2\2\28\66\3\2\2\28\67"+
+		"\3\2\2\29K\3\2\2\2:;\f\13\2\2;<\7\16\2\2<J\5\b\5\f=>\f\n\2\2>?\7\17\2"+
+		"\2?J\5\b\5\13@A\f\t\2\2AB\7\r\2\2BJ\5\b\5\nCD\f\b\2\2DE\7\f\2\2EJ\5\b"+
+		"\5\tFG\f\f\2\2GH\7\20\2\2HJ\5\n\6\2I:\3\2\2\2I=\3\2\2\2I@\3\2\2\2IC\3"+
+		"\2\2\2IF\3\2\2\2JM\3\2\2\2KI\3\2\2\2KL\3\2\2\2L\t\3\2\2\2MK\3\2\2\2NP"+
+		"\7\b\2\2OQ\7\r\2\2PO\3\2\2\2PQ\3\2\2\2QR\3\2\2\2RS\5\b\5\2ST\7\t\2\2T"+
+		"Z\3\2\2\2UW\7\r\2\2VU\3\2\2\2VW\3\2\2\2WX\3\2\2\2XZ\5\b\5\2YN\3\2\2\2"+
+		"YV\3\2\2\2Z\13\3\2\2\2[\\\7\6\2\2\\]\5\16\b\2]^\7\7\2\2^\r\3\2\2\2_d\5"+
+		"\20\t\2`a\7\n\2\2ac\5\20\t\2b`\3\2\2\2cf\3\2\2\2db\3\2\2\2de\3\2\2\2e"+
+		"\17\3\2\2\2fd\3\2\2\2gj\5\f\7\2hj\7\25\2\2ig\3\2\2\2ih\3\2\2\2j\21\3\2"+
+		"\2\2kl\7\24\2\2l\23\3\2\2\2\f\35\378IKPVYdi";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

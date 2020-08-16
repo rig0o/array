@@ -1,18 +1,16 @@
 package com.company;
-import org.antlr.v4.runtime.CharStream;
+
+import com.contralador.listener;
+import com.gui.latexGUI;
+
 import static org.antlr.v4.runtime.CharStreams.fromFileName;
 
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.apache.commons.math3.linear.Array2DRowRealMatrix;
-import org.apache.commons.math3.linear.CholeskyDecomposition;
-import org.apache.commons.math3.linear.RealMatrix;
 
 public class Main {
 
     public static void main(String[] args) throws Exception{
 
-        String ruta = "src/com/company/test.txt";
+        /*String ruta = "src/com/company/test.txt";
         CharStream input = fromFileName(ruta);
 
         matrizLexer lexer = new matrizLexer(input);
@@ -20,9 +18,37 @@ public class Main {
         matrizParser parser = new matrizParser(tokens);
 
         ParseTree tree =parser.sentencias();
-
+        //VISITOR
         MyVisitor visit = new MyVisitor();
         visit.visit(tree);
+        //listener
+        Mylistener lis = new Mylistener(visit.tabla);
+        ParseTreeWalker walker   = new ParseTreeWalker();
+        walker.walk(lis, tree);
+        System.out.println(lis.mathToLatex);
+
+        latexGUI gui = new latexGUI("antlr");
+        gui.setVisible(true);
+
+        JFrame frame = new JFrame("Antlr AST");
+        JPanel panel = new JPanel();
+        TreeViewer viewer = new TreeViewer(Arrays.asList(
+                parser.getRuleNames()),tree);
+        viewer.setScale(1.5); // Scale a little
+        panel.add(viewer);
+        frame.add(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);*/
+
+        matriz modelo = new matriz();
+        latexGUI vista = new latexGUI("antlr");
+
+        listener controlador = new listener(vista, modelo);
+
+        controlador.iniciar();
+        vista.setVisible(true);
+
 
 
 

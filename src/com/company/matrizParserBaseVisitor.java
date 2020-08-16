@@ -108,13 +108,6 @@ public class matrizParserBaseVisitor<T> extends AbstractParseTreeVisitor<T> impl
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTranspuesta(matrizParser.TranspuestaContext ctx) { return visitChildren(ctx); }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitPotenciasM(matrizParser.PotenciasMContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

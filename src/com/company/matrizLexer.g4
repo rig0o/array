@@ -1,5 +1,6 @@
 lexer grammar matrizLexer;
 
+PC:';';
 LCOR:'[';
 RCOR:']';
 LKEY:'{';
@@ -13,13 +14,13 @@ MINUS:'-';
 MULT:'*';
 DIV:'/';
 POW:'^';
-TRANS:'TRASNPUESTA'|'trasnpuesta';
+TRANS:'T'|'transpuesta';
 IMPRIME:'print'|'PRINT';
-//NL:[\r\n];
+
 WS:[ \r\n\t]->skip;
 ID:LETTER (LETTER)*;
-INT:DIGIT+;
+INT:DIGIT;
 fragment
 DIGIT:[0-9];
 fragment
-LETTER : [a-zA-Z_] ;
+LETTER : [a-z][a-zA-Z_]* ;

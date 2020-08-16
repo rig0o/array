@@ -4,9 +4,9 @@ options { tokenVocab=matrizLexer; }
 
 
 sentencias
-    :   (asignacion
-    |   e
-    |   imprime)*
+    :   (asignacion ';'
+    |   e ';'
+    |   imprime';')*
     ;
 imprime
     :   IMPRIME LPAREN e RPAREN
@@ -22,24 +22,16 @@ e
     |   e MINUS e                       #Menos
  	|   e PLUS e                        #Plus
  	|   LPAREN e RPAREN                 #Paren
- 	|   transpuesta                     #Trans
+ 	|   TRANS '(' e')'                   #Trans
  	|   arrayInitializer                #R1
     |   ID                              #Variable
     |   INT                             #Int
  	;
 
-transpuesta
-    :   TRANS'(' e')'
-    ;
 potencia
     : LPAREN MINUS? e RPAREN #PotenciasM
     | MINUS? e    #PotenciaA
     ;
-
-/*asignacion
-	:	tipo * '[' ']' ('[' ']')* ID EQ arrayInitializer
-	;*/
-
 arrayInitializer
     :	'{' variableInitializerList '}' #R2
     ;

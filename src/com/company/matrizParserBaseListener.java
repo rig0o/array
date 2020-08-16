@@ -172,18 +172,6 @@ public class matrizParserBaseListener implements matrizParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTranspuesta(matrizParser.TranspuestaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTranspuesta(matrizParser.TranspuestaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterPotenciasM(matrizParser.PotenciasMContext ctx) { }
 	/**
 	 * {@inheritDoc}

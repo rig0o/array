@@ -12,6 +12,7 @@ public class MyVisitor extends matrizParserBaseVisitor<Array2DRowRealMatrix>{
     Map<String,RealMatrix> tabla = new HashMap<String, RealMatrix>();
     int columnas ;
 
+
     @Override
     public Array2DRowRealMatrix visitSentencias(matrizParser.SentenciasContext ctx) {
 
@@ -26,11 +27,11 @@ public class MyVisitor extends matrizParserBaseVisitor<Array2DRowRealMatrix>{
 
     @Override
     public Array2DRowRealMatrix visitImprime(matrizParser.ImprimeContext ctx) {
-        System.out.println(ctx.getText());
+        System.out.println(ctx.e().getText());
         System.out.println(visit(ctx.e()));
+        tabla.put(ctx.e().getText(),visit(ctx.e()));
         return null;
     }
-
 
     @Override
     public Array2DRowRealMatrix visitVariable(matrizParser.VariableContext ctx) {
@@ -40,6 +41,12 @@ public class MyVisitor extends matrizParserBaseVisitor<Array2DRowRealMatrix>{
     @Override
     public Array2DRowRealMatrix visitParen(matrizParser.ParenContext ctx) {
         return visit(ctx.e());
+    }
+
+
+    @Override
+    public Array2DRowRealMatrix visitTrans(matrizParser.TransContext ctx) {
+        return (Array2DRowRealMatrix) visit(ctx.e()).transpose();
     }
 
     @Override
